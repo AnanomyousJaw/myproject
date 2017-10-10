@@ -1,0 +1,8 @@
+Input:--
+ram : hi
+som : how is bomb
+ram : i am not a terrorist. just practing bomb program in hadoop.
+som : oh nice, what will we do with bomb
+ram : we have to count how many times bomb word repeated
+o/p:--
+bomb 4
