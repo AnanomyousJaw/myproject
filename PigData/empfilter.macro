@@ -1,0 +1,3 @@
+DEFINE empfilter(objvar,colvar) returns x{
+$x = filter $objvar by $colvar123==15;
+};
