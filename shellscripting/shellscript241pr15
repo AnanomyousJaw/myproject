@@ -1,0 +1,283 @@
+[hdp@localhost ~]$ start-all.sh 
+Warning: $HADOOP_HOME is deprecated.
+
+starting namenode, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-namenode-localhost.localdomain.out
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: starting datanode, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-datanode-localhost.localdomain.out
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: starting secondarynamenode, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-secondarynamenode-localhost.localdomain.out
+starting jobtracker, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-jobtracker-localhost.localdomain.out
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: starting tasktracker, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-tasktracker-localhost.localdomain.out
+[hdp@localhost ~]$ hadoop fs -ls
+Warning: $HADOOP_HOME is deprecated.
+
+Found 6 items
+-rw-r--r--   1 hdp supergroup         75 2015-04-05 13:17 /user/hdp/chat
+drwxr-xr-x   - hdp supergroup          0 2015-04-05 13:28 /user/hdp/chatop
+-rw-r--r--   1 hdp supergroup         74 2015-04-03 19:44 /user/hdp/wiki
+-rw-r--r--   1 hdp supergroup         74 2015-04-03 20:24 /user/hdp/wiki2
+drwxr-xr-x   - hdp supergroup          0 2015-04-05 13:13 /user/hdp/wordop
+-rw-r--r--   1 hdp supergroup         44 2015-04-05 13:07 /user/hdp/words
+[hdp@localhost ~]$ hadoop fs -cat wiki
+Warning: $HADOOP_HOME is deprecated.
+
+en google 30 30000
+us yahoo 60 60000
+en yahoo 50 50000
+en google 70 70000
+[hdp@localhost ~]$ hadoop fs -rmr wiki
+Warning: $HADOOP_HOME is deprecated.
+
+rmr: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /user/hdp/wiki. Name node is in safe mode.
+[hdp@localhost ~]$ hadoop dfsadmin -safemode leave
+Warning: $HADOOP_HOME is deprecated.
+
+Safe mode is OFF
+[hdp@localhost ~]$ hadoop fs -rmr wiki
+Warning: $HADOOP_HOME is deprecated.
+
+Deleted hdfs://192.168.159.162:1234/user/hdp/wiki
+[hdp@localhost ~]$ hadoop fs -rmr wiki2
+Warning: $HADOOP_HOME is deprecated.
+
+Deleted hdfs://192.168.159.162:1234/user/hdp/wiki2
+[hdp@localhost ~]$ hadoop fs -rmr words
+Warning: $HADOOP_HOME is deprecated.
+
+Deleted hdfs://192.168.159.162:1234/user/hdp/words
+[hdp@localhost ~]$ hadoop fs -rmr wordsop
+Warning: $HADOOP_HOME is deprecated.
+
+rmr: cannot remove wordsop: No such file or directory.
+[hdp@localhost ~]$ hadoop fs -rmr wordop
+Warning: $HADOOP_HOME is deprecated.
+
+Deleted hdfs://192.168.159.162:1234/user/hdp/wordop
+[hdp@localhost ~]$ hadoop fs -rmr chatop
+Warning: $HADOOP_HOME is deprecated.
+
+Deleted hdfs://192.168.159.162:1234/user/hdp/chatop
+[hdp@localhost ~]$ hadoop fs -ls
+Warning: $HADOOP_HOME is deprecated.
+
+Found 1 items
+-rw-r--r--   1 hdp supergroup         75 2015-04-05 13:17 /user/hdp/chat
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ stop-all.sh 
+Warning: $HADOOP_HOME is deprecated.
+
+stopping jobtracker
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: stopping tasktracker
+stopping namenode
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: stopping datanode
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: stopping secondarynamenode
+[hdp@localhost ~]$ jps
+3367 Jps
+[hdp@localhost ~]$ start-all.sh 
+Warning: $HADOOP_HOME is deprecated.
+
+starting namenode, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-namenode-localhost.localdomain.out
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: starting datanode, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-datanode-localhost.localdomain.out
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: starting secondarynamenode, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-secondarynamenode-localhost.localdomain.out
+starting jobtracker, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-jobtracker-localhost.localdomain.out
+localhost: Warning: $HADOOP_HOME is deprecated.
+localhost: 
+localhost: starting tasktracker, logging to /home/hdp/hadoop-1.0.3/libexec/../logs/hadoop-hdp-tasktracker-localhost.localdomain.out
+[hdp@localhost ~]$ jps
+3474 NameNode
+3797 JobTracker
+3933 TaskTracker
+3709 SecondaryNameNode
+3588 DataNode
+3978 Jps
+[hdp@localhost ~]$ hadoop fa -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+Exception in thread "main" java.lang.NoClassDefFoundError: fa
+Caused by: java.lang.ClassNotFoundException: fa
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: fa.  Program will exit.
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+15/04/23 12:59:31 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:56987, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 12:59:31 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+15/04/23 12:59:34 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:56988, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 12:59:34 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+15/04/23 12:59:37 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:56989, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 12:59:37 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+^C[hdp@localhost ~]$ hadoop fa -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+Exception in thread "main" java.lang.NoClassDefFoundError: fa
+Caused by: java.lang.ClassNotFoundException: fa
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: fa.  Program will exit.
+[hdp@localhost ~]$ hadoop fa -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+Exception in thread "main" java.lang.NoClassDefFoundError: fa
+Caused by: java.lang.ClassNotFoundException: fa
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: fa.  Program will exit.
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+15/04/23 13:01:43 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:56995, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 13:01:43 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+15/04/23 13:01:46 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:56996, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 13:01:46 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+^C[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ gedit sandhya.sh
+[hdp@localhost ~]$ ./sandhya.sh 
+mydata
+2015-04-23
+13
+05
+Back up successful
+[hdp@localhost ~]$ ./sandhya.sh 
+mydata
+2015-04-23
+13
+06
+Back up successful
+[hdp@localhost ~]$ gedit sandhya.sh
+[hdp@localhost ~]$ ./sandhya.sh 
+mydata
+2015-04-23
+13
+07
+Back up successful
+[hdp@localhost ~]$ gedit sandhya.sh
+[hdp@localhost ~]$ ./sandhya.sh 
+mydata
+2015-04-23
+13
+-
+Back up successful
+[hdp@localhost ~]$ gedit sandhya.sh
+[hdp@localhost ~]$ su - root
+Password: 
+[root@localhost ~]# crontab -e
+crontab: installing new crontab
+[root@localhost ~]# crontab -e
+crontab: installing new crontab
+You have new mail in /var/spool/mail/root
+[root@localhost ~]# chmod 777 -R /home/hdp/Documents/
+You have new mail in /var/spool/mail/root
+[root@localhost ~]# chmod 777 -R /home/hdp/Documents/
+[root@localhost ~]# hadoop fs -cat chat
+-bash: hadoop: command not found
+[root@localhost ~]# logout
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+15/04/23 13:16:57 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:50764, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 13:16:57 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+15/04/23 13:17:00 WARN hdfs.DFSClient: Failed to connect to /127.0.0.1:50010, add to deadNodes and continuejava.io.IOException: Got error for OP_READ_BLOCK, self=/127.0.0.1:50765, remote=/127.0.0.1:50010, for file /user/hdp/chat, for block 834116836265713567_1034
+15/04/23 13:17:00 INFO hdfs.DFSClient: Could not obtain block blk_834116836265713567_1034 from any node: java.io.IOException: No live nodes contain current block. Will get new block locations from namenode and retry...
+^C[hdp@localhost ~]$ hadoop fs -cat chat
+Warning: $HADOOP_HOME is deprecated.
+
+hi how are you
+iam fine what about you
+iam also fine had breakfast?
+no you
+[hdp@localhost ~]$ ping 192.168.137.2
+PING 192.168.137.2 (192.168.137.2) 56(84) bytes of data.
+64 bytes from 192.168.137.2: icmp_seq=2 ttl=128 time=2.69 ms
+64 bytes from 192.168.137.2: icmp_seq=3 ttl=128 time=30.4 ms
+64 bytes from 192.168.137.2: icmp_seq=4 ttl=128 time=26.1 ms
+^C
+--- 192.168.137.2 ping statistics ---
+4 packets transmitted, 3 received, 25% packet loss, time 3804ms
+rtt min/avg/max/mdev = 2.691/19.761/30.465/12.200 ms
+[hdp@localhost ~]$ ping 192.168.137.200
+PING 192.168.137.200 (192.168.137.200) 56(84) bytes of data.
+From 192.168.137.102 icmp_seq=3 Destination Host Unreachable
+From 192.168.137.102 icmp_seq=6 Destination Host Unreachable
+^C
+--- 192.168.137.200 ping statistics ---
+6 packets transmitted, 0 received, +2 errors, 100% packet loss, time 5725ms
+
+[hdp@localhost ~]$ ping google.com
+PING google.com (216.58.196.110) 56(84) bytes of data.
+64 bytes from maa03s19-in-f14.1e100.net (216.58.196.110): icmp_seq=1 ttl=128 time=573 ms
+64 bytes from maa03s19-in-f14.1e100.net (216.58.196.110): icmp_seq=2 ttl=128 time=900 ms
+64 bytes from maa03s19-in-f14.1e100.net (216.58.196.110): icmp_seq=3 ttl=128 time=9.89 ms
+64 bytes from maa03s19-in-f14.1e100.net (216.58.196.110): icmp_seq=4 ttl=128 time=11.3 ms
+64 bytes from maa03s19-in-f14.1e100.net (216.58.196.110): icmp_seq=5 ttl=128 time=11.7 ms
+^C
+--- google.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 6443ms
+rtt min/avg/max/mdev = 9.897/301.398/900.301/370.356 ms
+[hdp@localhost ~]$ 

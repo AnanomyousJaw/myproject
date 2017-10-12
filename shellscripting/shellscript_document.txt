@@ -1,0 +1,43 @@
+Shell Script & scheduling :-
+
+create a file with .sh extension
+
+gedit backup.sh
+#!/bin/bash
+prefix=26nov16batch
+suffix1=$(date +%F)
+suffix2=$(date +%H)
+suffix3=$(date +%M)
+sp="-"
+echo $prefix
+echo $suffix1
+echo $suffix2
+echo $sp
+filename=$prefix$suffix1$sp$suffix2$sp$suffix3
+cp -r /home/hdp/26nov16 /home/hdp/Documents/$filename
+echo "Back up successful"
+
+save and close
+
+chmod 777 /home/xxx/backup.sh
+./backup.sh
+
+
+script will execute. if any errors fix it.
+
+Then we have to schedule the script.
+
+login as root user (su - root)
+
+crontab -e
+
+write 
+57 8 * * * /home/hdp/backup.sh
+56 7 * * * /home/hdp/file2.sh
+
+esc: wq
+
+backup will run daily @ 8:57 AM and 7:56 am
+
+From machine to machine
+rsync -avzpt /home/hdp/26nov16 192.168.X.X:/home/XXX/$filename
